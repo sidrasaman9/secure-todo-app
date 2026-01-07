@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MINI CICD project</title>
+
+    <!-- Prevent favicon.ico 404 -->
+    <link rel="icon" href="data:,">
+</head>
+<body>
+    <h2>📝 Secure To-Do List created by AA ""</h2>
+
+    <form method="post" action="/add">
+        <input type="text" name="task" required>
+        <button>Add Task</button>
+    </form>
+
+    <ul>
+        {% for task in tasks %}
+        <li>
+            {{ task[1] }}
+            <a href="/delete/{{ task[0] }}">❌</a>
+        </li>
+        {% endfor %}
+    </ul>
+    {% if tasks %}
+    <ul>
+    {% for task in tasks %}
+        <li>{{ task[1] }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No tasks yet. Please add a task.</p>
+{% endif %}
+
+</body>
+</html>
